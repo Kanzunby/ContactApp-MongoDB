@@ -1,0 +1,69 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mb-2">List Contact</h2>
+      <a
+        href="/contact/add"
+        class="btn btn-primary mb-2"
+        >Add Contact</a
+      >
+      <% if (msg.length > 0) { %>
+      <div
+        class="alert alert-success text-center"
+        role="alert"
+      >
+        <div><i class="bi bi-check-circle-fill"></i> <%= msg %></div>
+      </div>
+      <% } %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">No. Handphone</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (contacts.length === 0) { %>
+          <tr>
+            <td
+              colspan="4"
+              class="text-center"
+            >
+              <div
+                class="alert alert-danger"
+                role="alert"
+              >
+                <h4>
+                  <i class="bi bi-exclamation-triangle-fill"></i> Contact is
+                  empty
+                </h4>
+                <br />
+                <a
+                  href="/"
+                  class="alert-link"
+                  >&laquo; Return</a
+                >
+              </div>
+            </td>
+          </tr>
+          <% } %> <% contacts.forEach((contact, i) => { %>
+          <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= contact.name %></td>
+            <td><%= contact.phone %></td>
+            <td>
+              <a
+                href="/contact/<%= contact._id %>"
+                class="btn btn-success badge"
+                ><i class="bi bi-info-circle-fill"></i> detail</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
